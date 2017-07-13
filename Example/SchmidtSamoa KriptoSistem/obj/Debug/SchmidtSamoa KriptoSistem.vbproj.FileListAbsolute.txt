@@ -1,0 +1,14 @@
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\bin\Debug\SchmidtSamoa KriptoSistem.exe.config
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\bin\Debug\SchmidtSamoa KriptoSistem.exe
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\bin\Debug\SchmidtSamoa KriptoSistem.pdb
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\bin\Debug\SchmidtSamoa KriptoSistem.xml
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\bin\Debug\SchmidtSamoa.dll
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\bin\Debug\SchmidtSamoa.pdb
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\bin\Debug\SchmidtSamoa.xml
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\obj\Debug\SchmidtSamoa KriptoSistem.vbprojResolveAssemblyReference.cache
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\obj\Debug\SchmidtSamoa_KriptoSistem.Form1.resources
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\obj\Debug\SchmidtSamoa_KriptoSistem.Resources.resources
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\obj\Debug\SchmidtSamoa KriptoSistem.vbproj.GenerateResource.Cache
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\obj\Debug\SchmidtSamoa KriptoSistem.exe
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\obj\Debug\SchmidtSamoa KriptoSistem.xml
+C:\Users\kagan\AppData\Local\Temporary Projects\SchmidtSamoa KriptoSistem\obj\Debug\SchmidtSamoa KriptoSistem.pdb

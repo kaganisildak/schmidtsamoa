@@ -1,0 +1,9 @@
+C:\Users\kagan\Desktop\SchmidtSamoa\SchmidtSamoa\bin\Debug\SchmidtSamoa.dll
+C:\Users\kagan\Desktop\SchmidtSamoa\SchmidtSamoa\bin\Debug\SchmidtSamoa.pdb
+C:\Users\kagan\Desktop\SchmidtSamoa\SchmidtSamoa\bin\Debug\SchmidtSamoa.xml
+C:\Users\kagan\Desktop\SchmidtSamoa\SchmidtSamoa\obj\Debug\SchmidtSamoa.Resources.resources
+C:\Users\kagan\Desktop\SchmidtSamoa\SchmidtSamoa\obj\Debug\SchmidtSamoa.vbproj.GenerateResource.Cache
+C:\Users\kagan\Desktop\SchmidtSamoa\SchmidtSamoa\obj\Debug\SchmidtSamoa.dll
+C:\Users\kagan\Desktop\SchmidtSamoa\SchmidtSamoa\obj\Debug\SchmidtSamoa.xml
+C:\Users\kagan\Desktop\SchmidtSamoa\SchmidtSamoa\obj\Debug\SchmidtSamoa.pdb
+C:\Users\kagan\Desktop\SchmidtSamoa\SchmidtSamoa\obj\Debug\SchmidtSamoa.vbprojResolveAssemblyReference.cache
