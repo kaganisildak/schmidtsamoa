@@ -47,8 +47,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SchmidtSamoa">
-      <HintPath>..\..\SchmidtSamoa\SchmidtSamoa\bin\Debug\SchmidtSamoa.dll</HintPath>
+    <Reference Include="SchmidtSamoaCSharp">
+      <HintPath>..\..\SchmidtSamoaCSharp\SchmidtSamoaCSharp\bin\Debug\SchmidtSamoaCSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

@@ -2,48 +2,74 @@
 Public Module SchmidtSamoa
     Dim randoma As New Random(DateTime.Now.Millisecond)
 
-    Public Function KeyGenerate(KeyBit As Integer)
+    Public Function KeyGenerate(KeyBit As Integer, Optional ByVal PuFPr As Boolean = False, Optional ByVal privatekey As String = "")
         Dim p, q, pkey, skey As BigInteger
         Dim askey, apkey As String
-        Dim digit = Math.Round(KeyBit * 3 / 10) + 3
-        p = Prime(digit)
-        q = Prime(digit)
-        pkey = BigInteger.Multiply(BigInteger.Pow(p, 2), q)
-        skey = inversemod(pkey, LCM(p - 1, q - 1))
-        askey = "###SSPRIVATEKEY###" & vbCrLf & t2b("###SSPRIVATEKEY###" & t2b(skey.ToString) & "###SSPRIVATEKEY######SSP###" & t2b(p.ToString) & "###SSP######SSQ###" & t2b(q.ToString) & "###SSQ###") & vbCrLf & "###SSPRIVATEKEY###"
-        apkey = "###SSPUBLICKEY###" & vbCrLf & t2b(pkey.ToString) & vbCrLf & "###SSPUBLICKEY###"
-        Return askey & vbCrLf & vbCrLf & apkey
+        If PuFPr = False Then
+            Dim digit = Math.Round(KeyBit * 3 / 10) + 3
+            p = Prime(digit)
+            q = Prime(digit)
+            pkey = BigInteger.Multiply(BigInteger.Pow(p, 2), q)
+            skey = inversemod(pkey, LCM(p - 1, q - 1))
+            askey = "###SSPRIVATEKEY###" & vbCrLf & t2b("###SSPRIVATEKEY###" & t2b(skey.ToString) & "###SSPRIVATEKEY######SSP###" & t2b(p.ToString) & "###SSP######SSQ###" & t2b(q.ToString) & "###SSQ###") & vbCrLf & "###SSPRIVATEKEY###"
+            apkey = "###SSPUBLICKEY###" & vbCrLf & t2b(pkey.ToString) & vbCrLf & "###SSPUBLICKEY###"
+            Return askey & vbCrLf & vbCrLf & apkey
+        Else
+            Try
+                Dim tempkey As String
+                tempkey = b2t(Microsoft.VisualBasic.Split(privatekey, "###SSPRIVATEKEY###")(1))
+                p = BigInteger.Parse(b2t(Microsoft.VisualBasic.Split(tempkey, "###SSP###")(1)))
+                q = BigInteger.Parse(b2t(Microsoft.VisualBasic.Split(tempkey, "###SSQ###")(1)))
+                pkey = BigInteger.Multiply(BigInteger.Pow(p, 2), q)
+                apkey = "###SSPUBLICKEY###" & vbCrLf & t2b(pkey.ToString) & vbCrLf & "###SSPUBLICKEY###"
+                Return apkey
+            Catch ex As Exception
+                Throw New Exception("PrivateKey Hatalı")
+            End Try
+        End If
+
     End Function
 
 
     Public Function Encrypt(Data As String, PublicKey As String)
-        Dim pkey As BigInteger
-        Dim sdata
-        pkey = BigInteger.Parse(b2t(Microsoft.VisualBasic.Split(PublicKey, "###SSPUBLICKEY###")(1)))
-        For i = 0 To Data.Length - 1
-            If i = Data.Length - 1 Then
-                sdata += BigInteger.ModPow(BigInteger.Parse(Asc(Data.Chars(i))), pkey, pkey).ToString
-            Else
-                sdata += BigInteger.ModPow(BigInteger.Parse(Asc(Data.Chars(i))), pkey, pkey).ToString & " "
-            End If
-        Next
-        Return t2b(sdata)
+        Try
+            Dim pkey As BigInteger
+            Dim sdata
+            pkey = BigInteger.Parse(b2t(Microsoft.VisualBasic.Split(PublicKey, "###SSPUBLICKEY###")(1)))
+            For i = 0 To Data.Length - 1
+                If i = Data.Length - 1 Then
+                    sdata += BigInteger.ModPow(BigInteger.Parse(Asc(Data.Chars(i))), pkey, pkey).ToString
+                Else
+                    sdata += BigInteger.ModPow(BigInteger.Parse(Asc(Data.Chars(i))), pkey, pkey).ToString & " "
+                End If
+            Next
+            Return t2b(sdata)
+
+        Catch ex As Exception
+            Throw New Exception("PublicKey Hatalı")
+        End Try
     End Function
     Public Function Decrypt(Data As String, PrivateKey As String)
-        Dim pkey, skey, p, q As BigInteger
-        Dim tdata, tempkey, out, adata() As String
-        tempkey = b2t(Microsoft.VisualBasic.Split(PrivateKey, "###SSPRIVATEKEY###")(1))
-        skey = BigInteger.Parse(b2t(Microsoft.VisualBasic.Split(tempkey, "###SSPRIVATEKEY###")(1)))
-        p = BigInteger.Parse(b2t(Microsoft.VisualBasic.Split(tempkey, "###SSP###")(1)))
-        q = BigInteger.Parse(b2t(Microsoft.VisualBasic.Split(tempkey, "###SSQ###")(1)))
-        tdata = b2t(Data)
-        adata = Microsoft.VisualBasic.Split(tdata, " ")
-        For i = 0 To CountCharacter(tdata, " ")
-            Dim number As BigInteger = BigInteger.Parse(adata(i))
-            out = out & Chr(BigInteger.ModPow(number, skey, BigInteger.Multiply(p, q)).ToString)
-        Next
-        Return out
+        Try
+            Dim skey, p, q As BigInteger
+            Dim tdata, tempkey, out, adata() As String
+            tempkey = b2t(Microsoft.VisualBasic.Split(PrivateKey, "###SSPRIVATEKEY###")(1))
+            skey = BigInteger.Parse(b2t(Microsoft.VisualBasic.Split(tempkey, "###SSPRIVATEKEY###")(1)))
+            p = BigInteger.Parse(b2t(Microsoft.VisualBasic.Split(tempkey, "###SSP###")(1)))
+            q = BigInteger.Parse(b2t(Microsoft.VisualBasic.Split(tempkey, "###SSQ###")(1)))
+            tdata = b2t(Data)
+            adata = Microsoft.VisualBasic.Split(tdata, " ")
+            For i = 0 To CountCharacter(tdata, " ")
+                Dim number As BigInteger = BigInteger.Parse(adata(i))
+                out = out & Chr(BigInteger.ModPow(number, skey, BigInteger.Multiply(p, q)).ToString)
+            Next
+            Return out
+        Catch ex As Exception
+            Throw New Exception("PrivateKey Hatalı")
+        End Try
+
     End Function
+
     Function inversemod(a As BigInteger, n As BigInteger) As BigInteger
         Dim i As BigInteger = n, v As BigInteger = 0, d As BigInteger = 1
         While a > 0
