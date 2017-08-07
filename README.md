@@ -1,2 +1,2 @@
 # schmidtsamoa
-Schmidt Samoa Crypto System on .NET
+Schmidt Samoa Cryptosystem library for VB.NET
